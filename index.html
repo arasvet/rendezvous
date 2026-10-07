@@ -230,14 +230,14 @@ button{
   text-decoration-color:var(--faint);
 }
 
-/* ── Bento-плитки (вопросы 2 и 3) ── */
-.bento{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+/* ── Плитки ответов (вопросы 2 и 3) ──
+   одна колонка: каждый ответ во всю ширину, строго слева */
+.bento{ display:grid; grid-template-columns:1fr; gap:10px; }
 .opt-wrap{ min-width:0; }
-.tile--wide-wrap{ grid-column:1 / -1; }
 .tile{
   position:relative;
   display:flex; flex-direction:column; justify-content:flex-end;
-  min-height:104px; padding:16px 14px;
+  min-height:88px; padding:16px 14px;
   border:1px solid var(--line);
   background:var(--panel);
   color:var(--muted); text-align:left;
@@ -251,8 +251,6 @@ button{
 }
 .tile:hover{ border-color:var(--wine-line); color:var(--ink); }
 .tile:active{ transform:scale(.985); }
-/* ширина ряда задаётся обёртке (.tile--wide-wrap), здесь — только высота */
-.tile--wide{ min-height:76px; }
 .tile__num{
   position:absolute; top:10px; right:12px;
   font-size:.55rem; letter-spacing:.16em; color:var(--wine-ink);
@@ -438,8 +436,8 @@ button{
             <p class="quiz__count">Вопрос 2 / 4</p>
             <h3 class="quiz__title">Куда мы поедем в следующий <em>отпуск</em>?</h3>
             <div class="bento">
-              <div class="opt-wrap tile--wide-wrap" style="--d:.14s">
-                <button class="tile tile--wide opt" data-value="Мальдивы"><span class="tile__num">01</span>Мальдивы</button>
+              <div class="opt-wrap" style="--d:.14s">
+                <button class="tile opt" data-value="Мальдивы"><span class="tile__num">01</span>Мальдивы</button>
               </div>
               <div class="opt-wrap" style="--d:.22s">
                 <button class="tile opt" data-value="В горы / Азия"><span class="tile__num">02</span>В горы / Азия</button>
@@ -447,8 +445,8 @@ button{
               <div class="opt-wrap" style="--d:.3s">
                 <button class="tile opt" data-value="Туда, где тепло и красиво"><span class="tile__num">03</span>Туда, где тепло и красиво</button>
               </div>
-              <div class="opt-wrap tile--wide-wrap" style="--d:.38s">
-                <button class="tile tile--wide opt" data-value="Твой вариант"><span class="tile__num">04</span>Твой вариант</button>
+              <div class="opt-wrap" style="--d:.38s">
+                <button class="tile opt" data-value="Твой вариант"><span class="tile__num">04</span>Твой вариант</button>
               </div>
             </div>
           </div>
@@ -458,8 +456,8 @@ button{
             <p class="quiz__count">Вопрос 3 / 4</p>
             <h3 class="quiz__title">Что для нас обоих <em>самое главное</em> в отношениях?</h3>
             <div class="bento">
-              <div class="opt-wrap tile--wide-wrap" style="--d:.14s">
-                <button class="tile tile--wide opt" data-value="Доверие и поддержка"><span class="tile__num">01</span>Доверие и поддержка</button>
+              <div class="opt-wrap" style="--d:.14s">
+                <button class="tile opt" data-value="Доверие и поддержка"><span class="tile__num">01</span>Доверие и поддержка</button>
               </div>
               <div class="opt-wrap" style="--d:.22s">
                 <button class="tile opt" data-value="Юмор и локальные приколы"><span class="tile__num">02</span>Юмор и локальные приколы</button>
@@ -467,8 +465,8 @@ button{
               <div class="opt-wrap" style="--d:.3s">
                 <button class="tile opt" data-value="Внимание друг к другу"><span class="tile__num">03</span>Внимание друг к другу</button>
               </div>
-              <div class="opt-wrap tile--wide-wrap" style="--d:.38s">
-                <button class="tile tile--wide opt" data-value="Всё вместе и побольше"><span class="tile__num">04</span>Всё вместе и побольше</button>
+              <div class="opt-wrap" style="--d:.38s">
+                <button class="tile opt" data-value="Всё вместе и побольше"><span class="tile__num">04</span>Всё вместе и побольше</button>
               </div>
             </div>
           </div>
