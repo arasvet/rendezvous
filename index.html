@@ -251,7 +251,8 @@ button{
 }
 .tile:hover{ border-color:var(--wine-line); color:var(--ink); }
 .tile:active{ transform:scale(.985); }
-.tile--wide{ grid-column:1 / -1; min-height:76px; }
+/* ширина ряда задаётся обёртке (.tile--wide-wrap), здесь — только высота */
+.tile--wide{ min-height:76px; }
 .tile__num{
   position:absolute; top:10px; right:12px;
   font-size:.55rem; letter-spacing:.16em; color:var(--wine-ink);
@@ -446,8 +447,8 @@ button{
               <div class="opt-wrap" style="--d:.3s">
                 <button class="tile opt" data-value="Туда, где тепло и красиво"><span class="tile__num">03</span>Туда, где тепло и красиво</button>
               </div>
-              <div class="opt-wrap" style="--d:.38s">
-                <button class="tile opt" data-value="Твой вариант"><span class="tile__num">04</span>Твой вариант</button>
+              <div class="opt-wrap tile--wide-wrap" style="--d:.38s">
+                <button class="tile tile--wide opt" data-value="Твой вариант"><span class="tile__num">04</span>Твой вариант</button>
               </div>
             </div>
           </div>
@@ -466,8 +467,8 @@ button{
               <div class="opt-wrap" style="--d:.3s">
                 <button class="tile opt" data-value="Внимание друг к другу"><span class="tile__num">03</span>Внимание друг к другу</button>
               </div>
-              <div class="opt-wrap" style="--d:.38s">
-                <button class="tile opt" data-value="Всё вместе и побольше"><span class="tile__num">04</span>Всё вместе и побольше</button>
+              <div class="opt-wrap tile--wide-wrap" style="--d:.38s">
+                <button class="tile tile--wide opt" data-value="Всё вместе и побольше"><span class="tile__num">04</span>Всё вместе и побольше</button>
               </div>
             </div>
           </div>
