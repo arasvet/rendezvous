@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0509">
+<meta name="description" content="Личное приглашение · только для тебя">
+<title>Для Олеси Сахиповой 💌</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════
+   PREMIUM DARK ROMANTICISM · GLASSMORPHISM
+   ══════════════════════════════════════════ */
+:root{
+  --bg:        #0B0509;
+  --bg-raise:  #170A12;
+  --ink:       #F7EEF2;
+  --muted:     #B79DA9;
+  --rose:      #F2C1D3;
+  --rose-mid:  #D98EAD;
+  --wine:      #A4486C;
+  --wine-deep: #6E2A45;
+  --gold:      #E6C79C;
+  --hairline:  rgba(255,255,255,.09);
+  --glass:     rgba(255,255,255,.045);
+  --ease-out:    cubic-bezier(.32,.72,0,1);
+  --ease-spring: cubic-bezier(.34,1.45,.64,1);
+
+  /* Safe-area (вырез/панель iPhone) — зачитывается и из JS для границ «Нет» */
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+}
+
+*, *::before, *::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; -webkit-tap-highlight-color:transparent; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  min-height:100svh;
+  min-height:100dvh;
+  font-family:"Plus Jakarta Sans", system-ui, sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(120% 80% at 50% -10%, #22101B 0%, transparent 55%),
+    radial-gradient(90% 70% at 85% 110%, #1A0B14 0%, transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+  overscroll-behavior:none;
+}
+
+::selection{ background:rgba(217,142,173,.35); }
+/* Интерактив на iOS: touch-action убирает задержку тапа 300мс,
+   tap-highlight — серую подсветку при нажатии */
+button{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  user-select:none;
+  font-family:inherit;
+}
+
+/* ── Анимированный фон: плавающие сферы ── */
+.orbs{ position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.orb{ position:absolute; border-radius:50%; will-change:transform,opacity; }
+.orb--wine{
+  width:min(72vw,660px); aspect-ratio:1; left:-18%; top:-14%;
+  background:radial-gradient(closest-side, rgba(164,72,108,.5), transparent 72%);
+  animation:drift-a 26s var(--ease-out) infinite alternate;
+}
+.orb--rose{
+  width:min(62vw,580px); aspect-ratio:1; right:-24%; bottom:-16%;
+  background:radial-gradient(closest-side, rgba(217,142,173,.3), transparent 72%);
+  animation:drift-b 32s var(--ease-out) infinite alternate;
+}
+.orb--gold{
+  width:min(26vw,220px); aspect-ratio:1; right:10%; top:6%;
+  background:radial-gradient(closest-side, rgba(230,199,156,.22), transparent 70%);
+  animation:drift-a 18s var(--ease-out) infinite alternate-reverse;
+}
+.orb--deep{
+  width:min(48vw,440px); aspect-ratio:1; left:20%; bottom:-26%;
+  background:radial-gradient(closest-side, rgba(110,42,69,.55), transparent 72%);
+  animation:drift-b 38s var(--ease-out) infinite alternate-reverse;
+}
+@keyframes drift-a{
+  from{ transform:translate3d(0,0,0) scale(1);   opacity:.85; }
+  to  { transform:translate3d(7vw,6vh,0) scale(1.12); opacity:.55; }
+}
+@keyframes drift-b{
+  from{ transform:translate3d(0,0,0) scale(1.1); opacity:.7; }
+  to  { transform:translate3d(-6vw,-7vh,0) scale(.95); opacity:.4; }
+}
+
+/* ── Зернистость плёнки (fixed, не перехватывает клики) ── */
+.grain{
+  position:fixed; inset:0; z-index:60; pointer-events:none;
+  opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Прогресс по шагам ── */
+.progress{
+  position:fixed; top:max(14px, env(safe-area-inset-top)); left:50%;
+  transform:translateX(-50%);
+  width:min(calc(100% - 40px), 480px); height:2px;
+  border-radius:999px; background:rgba(255,255,255,.08);
+  overflow:hidden; z-index:20;
+}
+.progress__fill{
+  display:block; width:100%; height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg, var(--wine), var(--rose-mid), var(--rose));
+  transform-origin:left;
+  transform:scaleX(.16);
+  transition:transform 1.1s var(--ease-out);
+}
+
+/* ── Каркас экранов ── */
+.wrap{
+  position:relative; z-index:10;
+  /* <main> зафиксирован по ширине и отцентрирован — не «разъезжается» на десктопе */
+  width:min(100%, 480px);
+  margin-inline:auto;
+  /* 100dvh (Dynamic Viewport Height) — кнопки не режутся панелью Safari;
+     svh/vh — фолбэки для старых браузеров */
+  min-height:100vh; min-height:100svh; min-height:100dvh;
+  display:flex; flex-direction:column; align-items:stretch; justify-content:center;
+  padding:clamp(28px,7vh,56px) 20px calc(28px + env(safe-area-inset-bottom));
+}
+.screen{ display:none; width:100%; }
+.screen.is-active{ display:block; animation:screenIn .7s var(--ease-out); }
+@keyframes screenIn{
+  from{ opacity:0; transform:translateY(26px); filter:blur(14px); }
+  to  { opacity:1; transform:none; filter:blur(0); }
+}
+.screen__inner{ display:flex; flex-direction:column; gap:22px; padding:clamp(36px,8vh,72px) 0; }
+.screen__inner--center{ text-align:center; align-items:center; }
+
+/* Ступенчатое появление элементов */
+.reveal{
+  opacity:0; transform:translateY(22px); filter:blur(8px);
+  animation:rise .95s var(--ease-out) forwards;
+  animation-delay:var(--d, 0s);
+}
+@keyframes rise{ to{ opacity:1; transform:none; filter:blur(0); } }
+
+/* ── Типографика ── */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.5rem;
+  width:max-content;
+  padding:.5rem .95rem;
+  border-radius:999px;
+  font-size:.62rem; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase;
+  color:var(--rose-mid);
+  background:rgba(242,193,211,.06);
+  border:1px solid rgba(242,193,211,.18);
+}
+.h1{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  font-size:clamp(2.7rem, 12vw, 4.1rem);
+  line-height:1.05; letter-spacing:-.01em;
+}
+.h1 em, .h2 em, .quiz__title em{
+  font-style:italic; font-weight:500;
+  background:linear-gradient(120deg, var(--rose) 10%, var(--rose-mid) 45%, var(--wine) 80%);
+  -webkit-background-clip:text; background-clip:text;
+  color:transparent;
+}
+.h2{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  font-size:clamp(1.95rem, 8vw, 2.7rem);
+  line-height:1.12;
+}
+.h2--xl{ font-size:clamp(2.2rem, 9.5vw, 3.2rem); }
+.lead{
+  margin:0; max-width:36ch;
+  color:var(--muted);
+  font-size:.98rem; font-weight:300; line-height:1.65;
+}
+.lead--center{ margin-inline:auto; }
+
+/* ── Двойная оправа (bezel → core) ── */
+.bezel{
+  padding:5px;
+  border-radius:26px;
+  background:var(--glass);
+  border:1px solid var(--hairline);
+  box-shadow:0 30px 70px -35px rgba(0,0,0,.65);
+}
+.bezel__inner{
+  display:flex; align-items:center; gap:16px;
+  padding:20px 22px;
+  border-radius:21px;
+  background:linear-gradient(165deg, rgba(255,255,255,.075), rgba(255,255,255,.02) 55%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.plaque__icon{
+  flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  width:50px; height:50px; border-radius:16px;
+  background:rgba(242,193,211,.1);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.12);
+  color:var(--rose-mid);
+}
+.plaque__icon svg{ width:22px; height:22px; }
+.plaque__text{ display:flex; flex-direction:column; gap:4px; }
+.plaque__text b{
+  font-family:"Playfair Display", serif;
+  font-weight:600; font-size:1.12rem; letter-spacing:.01em;
+}
+.plaque__text small{ color:var(--muted); font-size:.8rem; font-weight:300; letter-spacing:.04em; }
+
+/* ── Квиз ── */
+.quiz{ display:grid; width:100%; }
+.quiz__q{
+  grid-area:1/1;
+  display:flex; flex-direction:column; justify-content:center; gap:16px;
+  visibility:hidden; opacity:0; pointer-events:none;
+}
+.quiz__q.is-active{ visibility:visible; opacity:1; pointer-events:auto; animation:qIn .55s var(--ease-out); }
+.quiz__q.is-leaving{ visibility:visible; pointer-events:none; animation:qOut .3s var(--ease-out) forwards; }
+@keyframes qIn{
+  from{ opacity:0; transform:translateX(40px); filter:blur(8px); }
+  to  { opacity:1; transform:none; filter:blur(0); }
+}
+@keyframes qOut{
+  from{ opacity:1; transform:none; filter:blur(0); }
+  to  { opacity:0; transform:translateX(-40px); filter:blur(8px); }
+}
+.quiz__count{
+  display:inline-flex; width:max-content;
+  padding:.4rem .85rem;
+  border-radius:999px;
+  font-size:.6rem; font-weight:600;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:var(--rose-mid);
+  background:rgba(242,193,211,.06);
+  border:1px solid rgba(242,193,211,.18);
+}
+.quiz__title{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  font-size:clamp(1.5rem, 6.8vw, 1.95rem);
+  line-height:1.22;
+}
+.quiz__opts{ display:flex; flex-direction:column; gap:10px; margin-top:4px; }
+.quiz__q.is-active .quiz__count{ opacity:0; animation:rise .6s var(--ease-out) forwards; animation-delay:.02s; }
+.quiz__q.is-active .quiz__title{ opacity:0; animation:rise .6s var(--ease-out) forwards; animation-delay:.08s; }
+.quiz__q.is-active .qoption__wrap{ opacity:0; animation:rise .6s var(--ease-out) forwards; animation-delay:var(--d, .14s); }
+
+.qoption{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  width:100%;
+  padding:15px 18px;
+  border-radius:18px;
+  border:1px solid var(--hairline);
+  background:linear-gradient(170deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  color:var(--muted);
+  font-size:.95rem; font-weight:500; text-align:left;
+  cursor:pointer;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:
+    background .4s var(--ease-out),
+    border-color .4s var(--ease-out),
+    color .4s var(--ease-out),
+    box-shadow .4s var(--ease-out),
+    transform .4s var(--ease-spring);
+}
+.qoption:hover{ background:rgba(242,193,211,.09); border-color:rgba(242,193,211,.28); color:var(--ink); }
+.qoption:active{ transform:scale(.98); }
+.qoption__chev{
+  flex:0 0 auto; opacity:.3;
+  transition:transform .4s var(--ease-spring), opacity .3s var(--ease-out);
+}
+.qoption__chev svg{ width:16px; height:16px; }
+.qoption:hover .qoption__chev{ opacity:1; transform:translateX(3px); }
+.qoption.is-picked{
+  color:var(--ink);
+  background:linear-gradient(150deg, rgba(178,80,110,.42), rgba(124,45,79,.3));
+  border-color:rgba(242,193,211,.45);
+  box-shadow:0 16px 40px -18px rgba(178,80,110,.55), inset 0 1px 1px rgba(255,255,255,.14);
+}
+.qoption.is-wrong{
+  animation:shake .45s var(--ease-out);
+  border-color:rgba(226,140,150,.5);
+  background:rgba(190,70,85,.13);
+  color:#EDB8BE;
+}
+@keyframes shake{
+  0%,100%{ transform:translateX(0); }
+  20%{ transform:translateX(-7px); } 40%{ transform:translateX(7px); }
+  60%{ transform:translateX(-5px); } 80%{ transform:translateX(5px); }
+}
+
+/* ── Всплывающая подсказка квиза ── */
+.toast{
+  position:fixed; left:50%;
+  bottom:calc(28px + env(safe-area-inset-bottom));
+  transform:translate(-50%, 16px) scale(.96);
+  opacity:0; pointer-events:none;
+  z-index:40;
+  max-width:min(calc(100% - 40px), 440px);
+  padding:13px 24px;
+  border-radius:999px;
+  text-align:center;
+  font-size:.92rem; font-weight:500;
+  color:var(--ink);
+  background:linear-gradient(160deg, rgba(58,24,38,.92), rgba(28,10,20,.92));
+  border:1px solid rgba(242,193,211,.28);
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.7), inset 0 1px 1px rgba(255,255,255,.12);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  transition:transform .45s var(--ease-spring), opacity .35s var(--ease-out);
+}
+.toast.show{ opacity:1; transform:translate(-50%, 0) scale(1); }
+
+/* ── Карточка образа (умный дресс-код) ── */
+.dresscard{ flex-direction:column; align-items:flex-start; gap:12px; }
+.dresscard__head{ display:flex; align-items:center; gap:12px; }
+.dresscard__icon{
+  display:flex; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:15px;
+  background:rgba(242,193,211,.1);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.12);
+  color:var(--rose-mid);
+}
+.dresscard__icon svg{ width:22px; height:22px; }
+.dresscard__title{ margin:0; font-family:"Playfair Display", serif; font-weight:600; font-size:1.2rem; }
+.dresscard__tag{
+  display:inline-flex; align-self:flex-start;
+  padding:.42rem .85rem;
+  border-radius:999px;
+  font-size:.64rem; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--rose);
+  background:rgba(242,193,211,.09);
+  border:1px solid rgba(242,193,211,.22);
+}
+.dresscard__text{ margin:0; font-size:.9rem; font-weight:300; line-height:1.65; color:var(--muted); }
+
+/* ── Завуалированный таймлайн вечера ── */
+.timeline{ flex-direction:column; align-items:stretch; }
+.timeline__list{
+  list-style:none; margin:0; padding:0;
+  position:relative;
+  display:flex; flex-direction:column; gap:24px;
+}
+.timeline__list::before{
+  content:""; position:absolute; left:7px; top:16px; bottom:16px; width:1px;
+  background:linear-gradient(180deg, rgba(242,193,211,.45), rgba(242,193,211,.06));
+}
+.timeline__item{ display:flex; gap:16px; }
+.timeline__dot{
+  flex:0 0 auto; width:15px; height:15px; margin-top:5px;
+  border-radius:999px;
+  background:radial-gradient(circle at 35% 30%, #F2C1D3, #A4486C 72%);
+  box-shadow:0 0 0 4px rgba(242,193,211,.12), 0 4px 16px -2px rgba(178,80,110,.55);
+}
+.timeline__time{ display:flex; align-items:baseline; gap:9px; margin:0 0 4px; }
+.timeline__time b{
+  font-family:"Playfair Display", serif;
+  font-style:italic; font-weight:600;
+  font-size:1.18rem; color:var(--rose);
+}
+.timeline__time span{
+  font-size:.64rem; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--muted);
+}
+.timeline__text{ margin:0; font-size:.88rem; font-weight:300; line-height:1.6; color:var(--muted); }
+
+/* ── CTA-кнопки (pill + вложенная стрелка) ── */
+.cta{
+  position:relative; isolation:isolate;
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  width:100%;
+  padding:7px 7px 7px 26px;
+  border:0; border-radius:999px;
+  cursor:pointer;
+  font-size:1rem; font-weight:600; letter-spacing:.01em;
+  color:var(--ink);
+  background:linear-gradient(140deg, #E2A6BE, #B2506E 55%, #8F3A5C);
+  box-shadow:0 18px 45px -18px rgba(178,80,110,.55), inset 0 1px 1px rgba(255,255,255,.28);
+  transition:transform .5s var(--ease-spring), box-shadow .5s var(--ease-out), filter .5s var(--ease-out);
+  will-change:transform;
+}
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 26px 60px -20px rgba(178,80,110,.65), inset 0 1px 1px rgba(255,255,255,.3);
+}
+.cta:active{ transform:scale(.975); }
+.cta__arrow{
+  display:flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:999px;
+  background:rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.25);
+  transition:transform .5s var(--ease-spring);
+}
+.cta:hover .cta__arrow{ transform:translateX(3px) translateY(-2px) scale(1.05); }
+.cta svg{ width:18px; height:18px; }
+
+.cta--yes{ padding:9px 9px 9px 30px; font-size:1.05rem; }
+.cta--yes .cta__arrow{ width:52px; height:52px; }
+.cta--yes::before{
+  content:""; position:absolute; inset:-3px; z-index:-1;
+  border-radius:999px;
+  background:linear-gradient(140deg, rgba(242,193,211,.5), rgba(164,72,108,.15));
+  filter:blur(14px);
+  opacity:.55;
+  animation:breathe 3.2s var(--ease-out) infinite alternate;
+}
+@keyframes breathe{ from{ opacity:.35; } to{ opacity:.75; } }
+
+.cta--no{
+  width:min(100%, 280px); align-self:center;
+  justify-content:center; padding:16px 26px;
+  color:var(--muted); font-weight:500; font-size:.95rem;
+  background:rgba(255,255,255,.055);
+  box-shadow:inset 0 0 0 1px var(--hairline), inset 0 1px 1px rgba(255,255,255,.1);
+  transition:transform .45s cubic-bezier(.3,1.4,.6,1), box-shadow .5s var(--ease-out);
+}
+
+/* ── Группы и подписи ── */
+.group + .group{ margin-top:26px; }
+.group__label{
+  margin:0 0 12px;
+  font-size:.66rem; font-weight:600;
+  letter-spacing:.24em; text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ── Экран вопроса ── */
+.answers{ display:flex; flex-direction:column; gap:14px; width:100%; margin-top:6px; }
+.hint{
+  margin:0;
+  font-size:.8rem; color:var(--rose-mid);
+  opacity:0; transform:translateY(8px);
+  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+.hint.show{ opacity:1; transform:none; }
+
+/* ── Экран успеха ── */
+.medallion{
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  width:104px; height:104px; border-radius:999px;
+  color:var(--rose);
+  background:linear-gradient(160deg, rgba(242,193,211,.16), rgba(124,45,79,.12));
+  border:1px solid rgba(242,193,211,.3);
+  box-shadow:0 30px 70px -30px rgba(178,80,110,.6), inset 0 1px 1px rgba(255,255,255,.2);
+}
+.medallion svg{ width:44px; height:44px; }
+.medallion::after{
+  content:""; position:absolute; inset:-12px;
+  border-radius:999px;
+  border:1px solid rgba(242,193,211,.28);
+  animation:ringPulse 2.8s var(--ease-out) infinite;
+}
+@keyframes ringPulse{
+  0%  { transform:scale(.92); opacity:.8; }
+  70% { transform:scale(1.22); opacity:0; }
+  100%{ transform:scale(1.22); opacity:0; }
+}
+.chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.chip{
+  padding:8px 15px;
+  border-radius:999px;
+  font-size:.78rem; font-weight:500;
+  color:var(--rose);
+  background:rgba(242,193,211,.07);
+  border:1px solid rgba(242,193,211,.25);
+}
+.note{ align-items:flex-start; text-align:left; }
+.note p{ margin:0; color:var(--muted); font-size:.9rem; font-weight:300; line-height:1.6; }
+.note b{ color:var(--ink); font-weight:600; }
+.note__icon{
+  flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:14px;
+  background:rgba(242,193,211,.1);
+  color:var(--rose-mid);
+}
+.note__icon svg{ width:20px; height:20px; }
+
+.footnote{
+  margin-top:4px;
+  font-size:.64rem; font-weight:500;
+  letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(183,157,169,.5);
+  text-align:center;
+}
+
+/* ── Доступность: сниженное движение ── */
+@media (prefers-reduced-motion: reduce){
+  .orb, .cta--yes::before, .medallion::after,
+  .quiz__q.is-active, .quiz__q.is-leaving, .qoption.is-wrong{ animation:none !important; }
+  .screen.is-active{ animation:none !important; }
+  .reveal{ animation:none !important; opacity:1; transform:none; filter:none; }
+  .quiz__q.is-active .quiz__count,
+  .quiz__q.is-active .quiz__title,
+  .quiz__q.is-active .qoption__wrap{ animation:none !important; opacity:1; }
+  .progress__fill{ transition:none; }
+  #btnNo{ transition:none; }
+}
+</style>
+</head>
+<body>
+
+  <!-- Плавающие сферы -->
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb--wine"></div>
+    <div class="orb orb--rose"></div>
+    <div class="orb orb--gold"></div>
+    <div class="orb orb--deep"></div>
+  </div>
+
+  <!-- Плёночное зерно -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Прогресс -->
+  <div class="progress" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
+
+  <!-- Всплывающая подсказка квиза -->
+  <div class="toast" id="quizToast" role="status" aria-live="polite"></div>
+
+  <main class="wrap">
+
+    <!-- ═══ ЭКРАН 1 · ПРИГЛАШЕНИЕ ═══ -->
+    <section class="screen is-active" id="screenIntro">
+      <div class="screen__inner">
+        <span class="eyebrow reveal" style="--d:.05s">✦ Шаг 01 · Приглашение</span>
+        <h1 class="h1 reveal" style="--d:.15s">Особое приглашение для <em>Олеси Сахиповой</em></h1>
+        <p class="lead reveal" style="--d:.28s">Олеся, без поводов и «может быть». Просто ты, я — и вечер, который мы запомним.</p>
+
+        <div class="bezel reveal" style="--d:.42s">
+          <div class="bezel__inner">
+            <span class="plaque__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4.5" y="6" width="15" height="14.5" rx="3"/>
+                <path d="M4.5 10.5h15"/>
+                <path d="M8.5 3.5V7"/>
+                <path d="M15.5 3.5V7"/>
+              </svg>
+            </span>
+            <span class="plaque__text">
+              <b id="dateLabel">Суббота, 17 октября</b>
+              <small id="dateTime">быть готовой к 16:30 · место раскроется за час</small>
+            </span>
+          </div>
+        </div>
+
+        <button class="cta reveal" style="--d:.56s" id="btnStart">
+          <span>Узнать детали</span>
+          <span class="cta__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+          </span>
+        </button>
+
+        <p class="footnote reveal" style="--d:.7s">Сделано с любовью · для тебя одной</p>
+      </div>
+    </section>
+
+    <!-- ═══ ЭКРАН 2 · РОМАНТИЧЕСКИЙ КВИЗ ═══ -->
+    <section class="screen" id="screenQuiz">
+      <div class="screen__inner">
+        <span class="eyebrow reveal" style="--d:.05s">✦ Шаг 02 · Мини-тест</span>
+        <p class="lead reveal" style="--d:.15s">Четыре вопроса. Проверим, как хорошо ты меня знаешь 😏</p>
+
+        <div class="quiz">
+          <!-- Вопрос 1 -->
+          <div class="quiz__q is-active" data-q="0">
+            <span class="quiz__count">Вопрос 1 из 4</span>
+            <h3 class="quiz__title">Кто первым сказал <em>«люблю»</em>?</h3>
+            <div class="quiz__opts">
+              <div class="qoption__wrap" style="--d:.14s">
+                <button class="qoption" data-value="Я">Я<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.22s">
+                <button class="qoption" data-value="Муж">Муж<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.3s">
+                <button class="qoption" data-value="Эльдар">Эльдар<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вопрос 2 -->
+          <div class="quiz__q" data-q="1">
+            <span class="quiz__count">Вопрос 2 из 4</span>
+            <h3 class="quiz__title">Куда мы поедем в следующий <em>отпуск</em>?</h3>
+            <div class="quiz__opts">
+              <div class="qoption__wrap" style="--d:.14s">
+                <button class="qoption" data-value="Мальдивы">Мальдивы<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.22s">
+                <button class="qoption" data-value="В горы / Азия">В горы / Азия<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.3s">
+                <button class="qoption" data-value="Туда, где тепло и красиво">Туда, где тепло и красиво<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.38s">
+                <button class="qoption" data-value="Твой вариант">Твой вариант<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вопрос 3 -->
+          <div class="quiz__q" data-q="2">
+            <span class="quiz__count">Вопрос 3 из 4</span>
+            <h3 class="quiz__title">Что для нас обоих <em>самое главное</em> в отношениях?</h3>
+            <div class="quiz__opts">
+              <div class="qoption__wrap" style="--d:.14s">
+                <button class="qoption" data-value="Доверие и поддержка">Доверие и поддержка<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.22s">
+                <button class="qoption" data-value="Юмор и локальные приколы">Юмор и локальные приколы<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.3s">
+                <button class="qoption" data-value="Внимание друг к другу">Внимание друг к другу<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.38s">
+                <button class="qoption" data-value="Всё вместе и побольше">Всё вместе и побольше<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вопрос 4 -->
+          <div class="quiz__q" data-q="3">
+            <span class="quiz__count">Вопрос 4 из 4</span>
+            <h3 class="quiz__title">Когда у нас состоялась <em>свадьба</em>?</h3>
+            <div class="quiz__opts">
+              <div class="qoption__wrap" style="--d:.14s">
+                <button class="qoption" data-value="12 июня 2025">12 июня 2025<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.22s">
+                <button class="qoption" data-value="26 июля 2025">26 июля 2025<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+              <div class="qoption__wrap" style="--d:.3s">
+                <button class="qoption" data-value="08 августа 2025">08 августа 2025<span class="qoption__chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.5l6.5 6.5L9 18.5"/></svg></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ЭКРАН 3 · ТАЙМЛАЙН И ДРЕСС-КОД ═══ -->
+    <section class="screen" id="screenDetails">
+      <div class="screen__inner">
+        <span class="eyebrow reveal" style="--d:.05s">✦ Шаг 03 · Детали вечера</span>
+        <h2 class="h2 reveal" style="--d:.15s">Вечер уже<br><em>спланирован.</em></h2>
+        <p class="lead reveal" style="--d:.28s">Вот как всё пройдёт. Места пока — секрет.</p>
+
+        <div class="group reveal" style="--d:.4s">
+          <p class="group__label">Как пройдёт вечер</p>
+          <div class="bezel">
+            <div class="bezel__inner timeline">
+              <ol class="timeline__list">
+                <li class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div>
+                    <p class="timeline__time"><b>16:30</b><span>Сбор и выезд</span></p>
+                    <p class="timeline__text">Быть готовой у машины — запрыгиваем и стартуем.</p>
+                  </div>
+                </li>
+                <li class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div>
+                    <p class="timeline__time"><b>17:00</b><span>Часть первая</span></p>
+                    <p class="timeline__text">Время для полного расслабления, перезагрузки и заботы о себе.</p>
+                  </div>
+                </li>
+                <li class="timeline__item">
+                  <span class="timeline__dot"></span>
+                  <div>
+                    <p class="timeline__time"><b>19:30</b><span>Часть вторая</span></p>
+                    <p class="timeline__text">Утончённый вечер, красивые вкусы и разговоры только о нас.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel reveal" style="--d:.52s">
+          <div class="bezel__inner dresscard">
+            <div class="dresscard__head">
+              <span class="dresscard__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 7.5 6.2 11.5h11.6L12 7.5Z"/>
+                  <path d="M12 7.5V6.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4"/>
+                </svg>
+              </span>
+              <p class="dresscard__title">Твой образ на вечер</p>
+            </div>
+            <span class="dresscard__tag">Смарт-кэжуал / Расслабленный шик</span>
+            <p class="dresscard__text">Выбирай что-то элегантное, но в чём тебе будет максимально комфортно и легко. Одежда, которую удобно снять и надеть, обувь, в которой приятно отдыхать. Ты будешь выглядеть великолепно!</p>
+          </div>
+        </div>
+
+        <button class="cta reveal" style="--d:.64s" id="btnToQuestion">
+          <span>Перейти к главному вопросу</span>
+          <span class="cta__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══ ЭКРАН 4 · ГЛАВНЫЙ ВОПРОС ═══ -->
+    <section class="screen" id="screenQuestion">
+      <div class="screen__inner screen__inner--center">
+        <span class="eyebrow reveal" style="--d:.05s">✦ Шаг 04 · Главный вопрос</span>
+        <h2 class="h2 h2--xl reveal" style="--d:.15s">Ты пойдёшь со мной<br>на <em>свидание</em>?</h2>
+        <p class="lead lead--center reveal" style="--d:.28s">Последний шаг. Обещаю: будет вкусно, красиво и немного таинственно.</p>
+
+        <div class="answers reveal" style="--d:.42s">
+          <button class="cta cta--yes" id="btnYes">
+            <span>Да, пойду</span>
+            <span class="cta__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20.6S3.8 15.1 3.8 9.7c0-2.9 2.3-5.1 5.1-5.1 1.7 0 2.6.9 3.1 1.7.5-.8 1.4-1.7 3.1-1.7 2.8 0 5.1 2.2 5.1 5.1 0 5.4-8.2 10.9-8.2 10.9Z"/>
+              </svg>
+            </span>
+          </button>
+          <button class="cta cta--no" id="btnNo">Нет</button>
+        </div>
+
+        <p class="hint" id="hintNo">Кнопка «нет» сегодня не работает — и не пытайся 😌</p>
+      </div>
+    </section>
+
+    <!-- ═══ ЭКРАН 5 · УСПЕХ ═══ -->
+    <section class="screen" id="screenSuccess">
+      <div class="screen__inner screen__inner--center">
+        <span class="eyebrow reveal" style="--d:.05s">✦ Финал · Ответ доставлен</span>
+
+        <span class="medallion reveal" style="--d:.15s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20.6S3.8 15.1 3.8 9.7c0-2.9 2.3-5.1 5.1-5.1 1.7 0 2.6.9 3.1 1.7.5-.8 1.4-1.7 3.1-1.7 2.8 0 5.1 2.2 5.1 5.1 0 5.4-8.2 10.9-8.2 10.9Z"/>
+          </svg>
+        </span>
+
+        <h2 class="h2 reveal" style="--d:.28s">Твой ответ<br>уже летит к мужу 💌</h2>
+        <p class="lead lead--center reveal" style="--d:.4s">Он всё прочитает — и начнёт готовиться. А ты готовься быть самой красивой.</p>
+
+        <div class="chips reveal" style="--d:.52s">
+          <span class="chip" id="chipDate">Суббота, 17 октября · к 16:30</span>
+          <span class="chip">Мини-тест — на отлично ✨</span>
+        </div>
+
+        <div class="bezel reveal" style="--d:.64s">
+          <div class="bezel__inner note">
+            <span class="note__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5.5" y="10.5" width="13" height="9.5" rx="2.5"/>
+                <path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>
+              </svg>
+            </span>
+            <p><b>Тайное место</b> откроется ровно за час до встречи. А пока — держи интригу, она тебе к лицу.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+  /* ══════════════════════════════════════════════
+     НАСТРОЙКИ — заполни перед отправкой жене
+     ══════════════════════════════════════════════ */
+  const TELEGRAM_BOT_TOKEN = '';                 // токен бота, напр. 123456789:AAE...
+  const TELEGRAM_CHAT_ID   = '';                 // твой chat_id, напр. 987654321
+  const EVENT_DATE         = '17 октября';       // дата события — уходит в плашку и в Telegram
+  const READY_TIME         = '16:30';            // быть готовой у машины — выезжаем на машине
+                                                // (в 17:00 мы ровно на первой локации — см. таймлайн)
+  const DATE_LABEL         = `Суббота, ${EVENT_DATE}`;
+  const TIME_LABEL         = `быть готовой к ${READY_TIME} · место раскроется за час`;
+
+  /* ── Состояние ── */
+  const state = { quiz: { q1: null, q2: null, q3: null, q4: null }, answered: false };
+
+  /* ── Дата на плашке ── */
+  document.getElementById('dateLabel').textContent = DATE_LABEL;
+  document.getElementById('dateTime').textContent  = TIME_LABEL;
+
+  /* ── Навигация между экранами + прогресс ── */
+  const progressFill = document.getElementById('progressFill');
+  const PROGRESS = {
+    screenIntro: .16,
+    screenQuiz: .28,
+    screenDetails: .78,
+    screenQuestion: .9,
+    screenSuccess: 1
+  };
+
+  function setProgress(v){ progressFill.style.transform = `scaleX(${v})`; }
+
+  function showScreen(id){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('is-active'));
+    document.getElementById(id).classList.add('is-active');
+    setProgress(PROGRESS[id]);
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('btnStart').addEventListener('click', () => showScreen('screenQuiz'));
+  document.getElementById('btnToQuestion').addEventListener('click', () => showScreen('screenQuestion'));
+
+  /* ── Квиз ── */
+  const quizQs = document.querySelectorAll('.quiz__q');
+  const QUIZ_PROGRESS = [.28, .4, .52, .64];
+  const QUIZ = [
+    { key: 'q1', jokes: { 'Эльдар': 'В точку! База! 🎯', fallback: 'Хм, ну почти... 😉' } },
+    { key: 'q2' },
+    { key: 'q3' },
+    { key: 'q4', correct: '26 июля 2025' }
+  ];
+
+  function goNext(fromIndex){
+    if (fromIndex === QUIZ.length - 1){
+      showScreen('screenDetails');
+      return;
+    }
+    const cur  = quizQs[fromIndex];
+    const next = quizQs[fromIndex + 1];
+    cur.classList.remove('is-active');
+    cur.classList.add('is-leaving');
+    setTimeout(() => cur.classList.remove('is-leaving'), 320);
+    next.classList.add('is-active');
+    setProgress(QUIZ_PROGRESS[fromIndex + 1]);
+  }
+
+  /* ── Всплывающая подсказка ── */
+  const toast = document.getElementById('quizToast');
+  let toastTimer = null;
+  function showToast(text, ms = 1700){
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), ms);
+  }
+
+  /* ── Мини-конфетти для верного ответа ── */
+  function miniConfetti(){
+    if (typeof confetti === 'undefined') return;
+    confetti({
+      particleCount: 70, spread: 75, startVelocity: 34,
+      origin: { y: .4 },
+      colors: ['#F2C1D3', '#D98EAD', '#A4486C', '#E6C79C']
+    });
+  }
+
+  /* ── Логика ответов ── */
+  document.querySelectorAll('.qoption').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q    = btn.closest('.quiz__q');
+      const qi   = Number(q.dataset.q);
+      const meta = QUIZ[qi];
+
+      if (btn.classList.contains('is-picked') || q.classList.contains('is-leaving')) return;
+
+      state.quiz[meta.key] = btn.dataset.value;
+
+      /* Вопрос с правильным ответом (свадьба) */
+      if (meta.correct){
+        if (btn.dataset.value === meta.correct){
+          btn.classList.add('is-picked');
+          miniConfetti();
+          setTimeout(() => goNext(qi), 850);
+        } else {
+          btn.classList.add('is-wrong');
+          showToast('Серьезно? 🧐 Попробуй еще раз!');
+          setTimeout(() => btn.classList.remove('is-wrong'), 520);
+        }
+        return;
+      }
+
+      /* Вопрос с шуткой (кто первым сказал «люблю») */
+      btn.classList.add('is-picked');
+      if (meta.jokes){
+        showToast(meta.jokes[btn.dataset.value] || meta.jokes.fallback, 1300);
+        setTimeout(() => goNext(qi), 1150);
+      } else {
+        setTimeout(() => goNext(qi), 480);
+      }
+    });
+  });
+
+  /* ── Убегающая кнопка «Нет» ── */
+  const noBtn   = document.getElementById('btnNo');
+  const hintNo  = document.getElementById('hintNo');
+  let dodges = 0;
+
+  function placeNoAt(x, y){
+    if (noBtn.style.position !== 'fixed'){
+      const r = noBtn.getBoundingClientRect();
+      noBtn.style.position = 'fixed';
+      noBtn.style.left     = r.left + 'px';
+      noBtn.style.top      = r.top  + 'px';
+      noBtn.style.width    = r.width + 'px';
+      noBtn.style.margin   = '0';
+      noBtn.style.zIndex   = '30';
+    }
+    const r = noBtn.getBoundingClientRect();
+    noBtn.style.transform = `translate3d(${x - r.left}px, ${y - r.top}px, 0)`;
+  }
+
+  /* Отступы safe-area (вырез, нижняя панель iPhone) — границы перемещений «Нет» */
+  function safeInsets(){
+    const s  = getComputedStyle(document.documentElement);
+    const px = v => { const n = parseFloat(s.getPropertyValue(v)); return Number.isFinite(n) ? n : 0; };
+    return {
+      top:    px('--safe-top'),
+      right:  px('--safe-right'),
+      bottom: px('--safe-bottom'),
+      left:   px('--safe-left')
+    };
+  }
+
+  function dodgeNo(){
+    const pad = 16, ins = safeInsets();
+    const w = noBtn.offsetWidth, h = noBtn.offsetHeight;
+    /* случайная точка строго внутри viewport (innerWidth/innerHeight) с учётом safe-area */
+    const minX = pad + ins.left,  maxX = window.innerWidth  - w - pad - ins.right;
+    const minY = pad + ins.top,   maxY = window.innerHeight - h - pad - ins.bottom;
+    const x = minX + Math.random() * Math.max(0, maxX - minX);
+    const y = minY + Math.random() * Math.max(0, maxY - minY);
+    placeNoAt(x, y);
+    dodges++;
+    if (dodges === 1) hintNo.classList.add('show');
+  }
+
+  /* mouseenter — десктоп. touchstart — iPhone: preventDefault() + passive:false
+     гасит синтетический клик, который иначе сработал бы раньше, чем кнопка сдвинулась */
+  noBtn.addEventListener('mouseenter', dodgeNo);
+  noBtn.addEventListener('touchstart', e => { e.preventDefault(); dodgeNo(); }, { passive: false });
+  /* страховка: если клик всё же дошёл — кнопка снова уходит */
+  noBtn.addEventListener('click',      e => { e.preventDefault(); dodgeNo(); });
+
+  window.addEventListener('resize', () => {
+    if (noBtn.style.position !== 'fixed') return;
+    const r = noBtn.getBoundingClientRect(), pad = 16, ins = safeInsets();
+    const x = Math.min(Math.max(r.left, pad + ins.left), Math.max(pad + ins.left, window.innerWidth  - r.width  - pad - ins.right));
+    const y = Math.min(Math.max(r.top,  pad + ins.top),  Math.max(pad + ins.top,  window.innerHeight - r.height - pad - ins.bottom));
+    placeNoAt(x, y);
+  });
+
+  /* ── Отправка в Telegram ── */
+  async function sendToTelegram(text){
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID){
+      console.warn('⚙️ Telegram не настроен: заполни TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в начале <script>');
+      return false;
+    }
+    const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text })
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(`Telegram API: ${data.description || res.status}`);
+    return true;
+  }
+
+  /* ── Большое конфетти ── */
+  function celebrate(){
+    if (typeof confetti === 'undefined') return;
+    const palette = ['#F2C1D3', '#D98EAD', '#A4486C', '#E6C79C', '#F7EEF2'];
+    confetti({ particleCount: 130, spread: 95, startVelocity: 38, origin: { y: .62 }, colors: palette });
+    setTimeout(() => confetti({ particleCount: 70, angle: 60,  spread: 65, origin: { x: 0, y: .75 }, colors: palette }), 220);
+    setTimeout(() => confetti({ particleCount: 70, angle: 120, spread: 65, origin: { x: 1, y: .75 }, colors: palette }), 360);
+    setTimeout(() => confetti({ particleCount: 50, spread: 120, startVelocity: 30, origin: { y: .4 }, colors: palette }), 650);
+    try {
+      const hearts = confetti.shapeFromText({ text: '❤️', scalar: 2 });
+      setTimeout(() => confetti({ particleCount: 28, spread: 110, origin: { y: .32 }, shapes: [hearts], scalar: 1.7, colors: ['#D98EAD', '#A4486C', '#F2C1D3'] }), 900);
+      setTimeout(() => confetti({ particleCount: 16, spread: 160, origin: { y: .25 }, shapes: [hearts], scalar: 1.3, gravity: .55, drift: .4, colors: ['#E6C79C', '#F2C1D3'] }), 1500);
+    } catch (e) { /* старый canvas-confetti — сердца пропустим */ }
+  }
+
+  /* ── Клик по «Да» ── */
+  document.getElementById('btnYes').addEventListener('click', async () => {
+    if (state.answered) return;
+    state.answered = true;
+    celebrate();
+    noBtn.style.display = 'none';
+
+    document.getElementById('chipDate').textContent = `${DATE_LABEL} · к ${READY_TIME}`;
+
+    const message =
+      `🎉 Олеся Сахипова приняла приглашение на ${EVENT_DATE}!\n` +
+      `🚗 Готовность: к ${READY_TIME}\n\n` +
+      '📊 Ответы из квиза:\n' +
+      `• Кто первый сказал люблю: ${state.quiz.q1}\n` +
+      `• План на отпуск: ${state.quiz.q2}\n` +
+      `• Главное в отношениях: ${state.quiz.q3}`;
+
+    try {
+      await sendToTelegram(message);
+    } catch (e) {
+      console.error('Не удалось отправить в Telegram:', e);
+    }
+
+    setTimeout(() => showScreen('screenSuccess'), 1100);
+  });
+  </script>
+</body>
+</html>
