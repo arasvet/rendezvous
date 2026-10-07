@@ -858,12 +858,16 @@ button{
   }
 
   /* ── Мини-конфетти для верного ответа ── */
+  const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
+
   function miniConfetti(){
     if (typeof confetti === 'undefined') return;
     confetti({
-      particleCount: 70, spread: 75, startVelocity: 34,
+      particleCount: Math.round(70 * (isMobileView() ? .55 : 1)),
+      spread: 75, startVelocity: 34,
       origin: { y: .4 },
-      colors: ['#F2C1D3', '#D98EAD', '#A4486C', '#E6C79C']
+      colors: ['#F2C1D3', '#D98EAD', '#A4486C', '#E6C79C'],
+      disableForReducedMotion: true
     });
   }
 
@@ -963,6 +967,14 @@ button{
   });
 
   /* ── Отправка в Telegram ── */
+  const TG_TIMEOUT_MS = 7000; // жёсткий таймаут: висящий запрос не должен блокировать UI
+
+  function tgFetch(url, init){
+    const ctrl  = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), TG_TIMEOUT_MS);
+    return fetch(url, { ...init, signal: ctrl.signal }).finally(() => clearTimeout(timer));
+  }
+
   async function sendToTelegram(text){
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID){
       console.warn('⚙️ Telegram не настроен: заполни TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в начале <script>');
@@ -975,7 +987,7 @@ button{
        JSON-POST требует OPTIONS, который api.telegram.org не отдаёт —
        из-за этого браузер резал запрос (CORS did not succeed) */
     try {
-      const res = await fetch(url, {
+      const res = await tgFetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString()
@@ -990,7 +1002,7 @@ button{
       /* Фолбэк no-cors: ответ не читаем, но запрос доставляем.
          Срабатывает, когда сеть/браузер не дают прочитать ответ */
       try {
-        await fetch(url, {
+        await tgFetch(url, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -1007,19 +1019,22 @@ button{
   function celebrate(){
     if (typeof confetti === 'undefined') return;
     const palette = ['#F2C1D3', '#D98EAD', '#A4486C', '#E6C79C', '#F7EEF2'];
-    confetti({ particleCount: 130, spread: 95, startVelocity: 38, origin: { y: .62 }, colors: palette });
-    setTimeout(() => confetti({ particleCount: 70, angle: 60,  spread: 65, origin: { x: 0, y: .75 }, colors: palette }), 220);
-    setTimeout(() => confetti({ particleCount: 70, angle: 120, spread: 65, origin: { x: 1, y: .75 }, colors: palette }), 360);
-    setTimeout(() => confetti({ particleCount: 50, spread: 120, startVelocity: 30, origin: { y: .4 }, colors: palette }), 650);
+    /* на мобильных меньше частиц — GPU телефона не должен подвисать */
+    const k  = isMobileView() ? .55 : 1;
+    const rm = { disableForReducedMotion: true };
+    confetti({ particleCount: Math.round(130 * k), spread: 95, startVelocity: 38, origin: { y: .62 }, colors: palette, ...rm });
+    setTimeout(() => confetti({ particleCount: Math.round(70 * k), angle: 60,  spread: 65, origin: { x: 0, y: .75 }, colors: palette, ...rm }), 220);
+    setTimeout(() => confetti({ particleCount: Math.round(70 * k), angle: 120, spread: 65, origin: { x: 1, y: .75 }, colors: palette, ...rm }), 360);
+    setTimeout(() => confetti({ particleCount: Math.round(50 * k), spread: 120, startVelocity: 30, origin: { y: .4 }, colors: palette, ...rm }), 650);
     try {
       const hearts = confetti.shapeFromText({ text: '❤️', scalar: 2 });
-      setTimeout(() => confetti({ particleCount: 28, spread: 110, origin: { y: .32 }, shapes: [hearts], scalar: 1.7, colors: ['#D98EAD', '#A4486C', '#F2C1D3'] }), 900);
-      setTimeout(() => confetti({ particleCount: 16, spread: 160, origin: { y: .25 }, shapes: [hearts], scalar: 1.3, gravity: .55, drift: .4, colors: ['#E6C79C', '#F2C1D3'] }), 1500);
+      setTimeout(() => confetti({ particleCount: Math.round(28 * k), spread: 110, origin: { y: .32 }, shapes: [hearts], scalar: 1.7, colors: ['#D98EAD', '#A4486C', '#F2C1D3'], ...rm }), 900);
+      setTimeout(() => confetti({ particleCount: Math.round(16 * k), spread: 160, origin: { y: .25 }, shapes: [hearts], scalar: 1.3, gravity: .55, drift: .4, colors: ['#E6C79C', '#F2C1D3'], ...rm }), 1500);
     } catch (e) { /* старый canvas-confetti — сердца пропустим */ }
   }
 
   /* ── Клик по «Да» ── */
-  document.getElementById('btnYes').addEventListener('click', async () => {
+  document.getElementById('btnYes').addEventListener('click', () => {
     if (state.answered) return;
     state.answered = true;
     celebrate();
@@ -1035,13 +1050,13 @@ button{
       `• План на отпуск: ${state.quiz.q2}\n` +
       `• Главное в отношениях: ${state.quiz.q3}`;
 
-    try {
-      await sendToTelegram(message);
-    } catch (e) {
-      console.error('Не удалось отправить в Telegram:', e);
-    }
-
+    /* Финал показываем сразу — отправка в Telegram идёт в фоне и не блокирует
+       переход: медленная/заблокированная сеть раньше замораживала экран вопроса */
     setTimeout(() => showScreen('screenSuccess'), 1100);
+
+    sendToTelegram(message)
+      .then(ok => { if (!ok) console.warn('⚙️ Telegram не настроен — сообщение не отправлено'); })
+      .catch(e => console.error('Не удалось отправить в Telegram:', e));
   });
   </script>
 </body>
