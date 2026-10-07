@@ -968,14 +968,39 @@ button{
       console.warn('⚙️ Telegram не настроен: заполни TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в начале <script>');
       return false;
     }
-    const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text })
-    });
-    const data = await res.json();
-    if (!data.ok) throw new Error(`Telegram API: ${data.description || res.status}`);
-    return true;
+    const url  = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const body = new URLSearchParams({ chat_id: TELEGRAM_CHAT_ID, text });
+
+    /* x-www-form-urlencoded = «simple request» без CORS-preflight:
+       JSON-POST требует OPTIONS, который api.telegram.org не отдаёт —
+       из-за этого браузер резал запрос (CORS did not succeed) */
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      });
+      if (res.ok){
+        const data = await res.json();
+        if (data.ok) return true;
+        throw new Error(`Telegram API: ${data.description || res.status}`);
+      }
+      throw new Error(`Telegram API: HTTP ${res.status}`);
+    } catch (e) {
+      /* Фолбэк no-cors: ответ не читаем, но запрос доставляем.
+         Срабатывает, когда сеть/браузер не дают прочитать ответ */
+      try {
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        });
+        return true;
+      } catch (e2) {
+        throw new Error(`Telegram недоступен из этой сети (${e.message}; fallback: ${e2.message})`);
+      }
+    }
   }
 
   /* ── Большое конфетти ── */
