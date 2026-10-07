@@ -967,7 +967,8 @@ button{
   });
 
   /* ── Отправка в Telegram ── */
-  const TG_TIMEOUT_MS = 7000; // жёсткий таймаут: висящий запрос не должен блокировать UI
+  const TG_TIMEOUT_MS = 15000; // мобильные сети медленные — даём запросу время;
+                               // UI не блокируется: отправка идёт в фоне
 
   function tgFetch(url, init){
     const ctrl  = new AbortController();
@@ -980,14 +981,12 @@ button{
       console.warn('⚙️ Telegram не настроен: заполни TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в начале <script>');
       return false;
     }
-    const url  = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const base = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
     const body = new URLSearchParams({ chat_id: TELEGRAM_CHAT_ID, text });
 
-    /* x-www-form-urlencoded = «simple request» без CORS-preflight:
-       JSON-POST требует OPTIONS, который api.telegram.org не отдаёт —
-       из-за этого браузер резал запрос (CORS did not succeed) */
+    /* Эшелон 1: обычный fetch (urlencoded = simple request, без CORS-preflight) */
     try {
-      const res = await tgFetch(url, {
+      const res = await tgFetch(`${base}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString()
@@ -995,24 +994,36 @@ button{
       if (res.ok){
         const data = await res.json();
         if (data.ok) return true;
-        throw new Error(`Telegram API: ${data.description || res.status}`);
+        /* Ошибка самого API (токен/чат) — повторять бесполезно */
+        console.error('Telegram ответил ошибкой:', data.description);
+        return false;
       }
-      throw new Error(`Telegram API: HTTP ${res.status}`);
-    } catch (e) {
-      /* Фолбэк no-cors: ответ не читаем, но запрос доставляем.
-         Срабатывает, когда сеть/браузер не дают прочитать ответ */
-      try {
-        await tgFetch(url, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString()
-        });
-        return true;
-      } catch (e2) {
-        throw new Error(`Telegram недоступен из этой сети (${e.message}; fallback: ${e2.message})`);
-      }
+      console.warn('Telegram: HTTP', res.status);
+      return false;
+    } catch (e1) {
+      console.warn('Эшелон 1 (fetch) не удался:', e1.message);
     }
+
+    /* Эшелон 2: no-cors — ответ не читаем, но запрос доставляем */
+    try {
+      await tgFetch(`${base}/sendMessage`, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      });
+      return true;
+    } catch (e2) {
+      console.warn('Эшелон 2 (no-cors) не удался:', e2.message);
+    }
+
+    /* Эшелон 3: GET-beacon через <img> — без CORS в принципе.
+       Сервер вернёт JSON (браузер сочтёт его «битой картинкой»),
+       поэтому успех не проверяем: запрос уходит на сетевом уровне */
+    console.warn('Эшелон 3: отправка GET-beacon');
+    const img = new Image();
+    img.src = `${base}/sendMessage?${body.toString()}`;
+    return true;
   }
 
   /* ── Большое конфетти ── */
